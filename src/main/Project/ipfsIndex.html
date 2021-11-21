@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/ipfs/dist/index.min.js"></script>
+</head>
+<script>
+    document.addEventListener('DOMContentLoaded', async () => {
+        const nodeId = 'ipfs-' + Math.random()
+        const node = await Ipfs.create({ repo: nodeId })
+        console.log("Your node: " + nodeId)
+        window.node = node
+        const status = node.isOnline() ? 'online' : 'offline'
+        console.log(`Node status: ${status}`)
+
+        //create a variable with the directory path '/my/beautiful/directory'
+        // and a file 'awesomesause.txt' with the content 'ABC'
+        var files = [{
+            path: '/my/beautiful/directory/firstfile.txt',
+            content: 'ABC'
+        }]
+
+        addFile(files) //add the first file
+
+        //update the 'files' variable to add another file to the directory path '/mybeautiful/directory' in ipfs
+        files = [{
+            path: '/my/beautiful/directory/secondfile.txt',
+            content: 'DEF'
+        }]
+
+        addFile(files) //add the sectond file
+
+        //function to add the files
+        async function addFile (files) {
+            for await (const result of node.add(files)) {
+                console.log(result)
+            }
+        }
+    })
+</script>
+<body>
+</body>
+</html>

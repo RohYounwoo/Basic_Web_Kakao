@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>loading</title>
+    <link rel="stylesheet" href="03.css">
+    <style>
+        @charset "utf-8";
+
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            display: flex;
+            min-height: 100vh;
+            justify-content: center;
+            align-items: center;
+        }
+        .wrapper{
+            width: 300px;
+            height: 300px;
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .wrapper .p{
+            text-transform: uppercase;
+        }
+        .wrapper .circle{
+            position: absolute;
+            width: 150px;
+            height: 150px;
+            border: 3px solid #7FDBFF;
+            animation: ani 2s linear infinite;
+            border-radius: 43% 57% 18% 82% / 64% 79% 21% 36%  ;
+        }
+        @keyframes ani {
+            0%{
+                transform: rotate(0deg);
+            }
+            100%{
+                transform: rotate(360deg);
+            }
+        }
+
+        .wrapper .circle:nth-child(2){
+            border-color: #0074D9;
+            animation-delay: 1000ms;
+            animation: ani 3s linear infinite;
+            border-radius: 29% 71% 87% 13% / 90% 80% 20% 10%;
+        }
+
+        .wrapper .circle:nth-child(3){
+            border-color: #39CCCC;
+            animation-delay: 500ms;
+            animation: ani 4s linear infinite;
+            border-radius: 43% 57% 42% 58% / 64% 39% 61% 36%;
+        }
+
+    </style>
+</head>
+<body>
+<div class="wrapper">
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <div class="circle"></div>
+    <p>loading....</p>
+</div>
+</body>
+</html>

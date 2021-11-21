@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <input type="file" id="filepicker" name="fileList" webkitdirectory multiple />
+    <ul id="listing"></ul>
+
+
+    <script>
+        
+        var data = spawnSync('node', ['45_command_line_args.js', 10]);
+        console.log(data.stdout.toString());
+
+        document.getElementById("filepicker").addEventListener("change", function(event) {
+            let output = document.getElementById("listing");
+            let files = event.target.files;
+
+            output.innerHTML = "";
+            for (let i=0; i<files.length; i++) {
+                let item = document.createElement("li");
+                item.innerHTML = files[i].webkitRelativePath;
+                output.appendChild(item);
+            };
+        }, false);
+    </script>
+</body>
+</html>
